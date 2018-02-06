@@ -13,14 +13,9 @@ opth = "pdf/"
 DYZ = 256*256
 
 # stencil size
-stz = ["7p"]
-"""
 stz = ["7p", "13p", "19p", "25p", "31p", "37p"]
-"""
 
 # optimization
-opt = ["Base"]
-"""
 opt = ["Base", 
         "Sham", 
         "ZintReg", 
@@ -33,7 +28,6 @@ opt = ["Base",
         "RocZintReg", 
         "RocZint", 
         "ShamRocZintTempReg"]
-"""
 
 for st in stz:
     for op in opt:
@@ -48,3 +42,4 @@ for st in stz:
         pp = PdfPages(opth + file_name + ".pdf")
         pp.savefig(fig)
         pp.close()
+        pl.close(fig)
