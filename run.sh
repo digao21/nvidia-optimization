@@ -26,6 +26,8 @@ opts[9]="RocZintReg"
 opts[10]="RocZint"
 opts[11]="ShamRocZintTempReg"
 
+export CUDA_AUTO_BOOST=0
+
 for st in "${stsz[@]}"
 do
 	for ((opt=0; opt<=$OPT_MX; opt++))
@@ -36,8 +38,7 @@ do
 		for ((dx=32; dx<=$DXMAX; dx+=32))
 		do
 			#echo Executing $st test, "${opts[$opt]}" optimization, $dx dx
-
-			$BIN/$st.exe 0 $dx 256 256 5 $VERBOSE >> $FILE
+			$BIN/$st.exe $opt $dx 256 256 5 $VERBOSE >> $FILE
 		done
 	done
 done
